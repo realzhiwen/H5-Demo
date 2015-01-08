@@ -1,3 +1,3 @@
 #Demo
 ===
-1.转盘--- pan.html
+1.转盘抽奖 --- rotary_draw.html

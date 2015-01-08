@@ -1,9 +1,9 @@
 {
-  "name": "aliplay",
+  "name": "demo",
   "version": "1.0.0",
   "author": {
-    "name": "zhiwen.gzw",
-    "email": "zhiwen.gzw@alibaba-inc.com"
+    "name": "realzhiwen",
+    "email": "realzhiwen@github.com"
   },
   "dependencies": {},
   "devDependencies": {
