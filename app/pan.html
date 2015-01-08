@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+    <meta name="format-detection" content="telephone=no, address=no, email=no">
+    <meta name="mobileOptimized" content="width">
+    <meta name="handheldFriendly" content="true">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <title></title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            /*-webkit-tap-highlight-color: rgba(0, 0, 0, 0) !important;*/
+            /*-webkit-focus-ring-color: rgba(0, 0, 0, 0) !important;*/
+            /*outline: none !important;*/
+            list-style: none
+        }
+        #container {
+            width: 320px;
+            -webkit-transform-origin: left top
+        }
+        #wraper{
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            position: relative;
+            overflow: hidden;
+        }
+        #pan{
+            width: 300px;
+            height: 300px;
+            position: absolute;
+            top: 0;
+            left: 0;
+            background-image: url('http://gtms04.alicdn.com/tps/i4/TB1gNlVHXXXXXcJXXXXdtp1PXXX-506-506.png');
+            background-size: 100% 100%;
+
+            -webkit-transform: rotate(0deg);
+            -webkit-transition:-webkit-transform 5s;
+
+
+
+        }
+        #pointer{
+            width: 300px;
+            height: 300px;
+
+            position: absolute;
+            top: 0;
+            left: 0;
+
+            background-size: 100% 100%;
+            background-image: url('http://gtms01.alicdn.com/tps/i1/TB1iWNYHXXXXXadXXXXdtp1PXXX-506-506.png');
+
+            -webkit-transform: rotate(0deg);
+            -webkit-transition:-webkit-transform 5s;
+
+        }
+        .btn{
+            display: block;
+            width: 150px;
+            height: 40px;
+            line-height:  40px;
+            text-align: center;
+            margin: 0 auto;
+            border: 1px solid #fece53;
+            border-radius: 10px;
+            color: #FFF;
+            background: #fd5512;
+            text-decoration: none;
+            box-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+
+    </style>
+</head>
+<body>
+<div id="container">
+    <div id="wraper">
+        <div id="pan"></div>
+        <div id="pointer"></div>
+    </div>
+    <a href="" id="play" class="btn">开始抽奖</a>
+    <a href="" id="replay" class="btn" style="display: none">再玩一次</a>
+</div>
+
+
+
+
+
+</body>
+<script>
+    (function(){
+        // 屏幕缩放
+        var width = document.documentElement.clientWidth;
+        var scale = width / 320;
+        document.getElementById("container").style.webkitTransform = "scale(" + scale + ")";
+
+
+
+        var pan = document.getElementById('pan');
+        var pointer = document.getElementById('pointer');
+        var play = document.getElementById('play');
+        var replay = document.getElementById('replay');
+//        var giftDeg = 70;
+
+        var lucky = function(num){
+            // 默认转5圈
+            var deg = 3600;
+            // 计算奖品角度
+            deg = deg +num*45-22;
+            console.log(deg)
+            pan.style.webkitTransform = 'rotate('+deg+'deg)';
+            //指针翻转效果,可以去掉
+            pointer.style.webkitTransform = 'rotate(-3600deg)';
+            setTimeout(function(){
+                play.style.display = 'none';
+                replay.style.display = '';
+            },5000)
+        };
+
+
+
+
+
+        play.onclick = function(){
+            var num =Math.ceil(Math.random()*8);
+            lucky(num);
+            return false;
+        };
+
+        replay.onclick = function(){
+            window.location.reload();
+            return false;
+        }
+
+    })();
+</script>
+</html>
